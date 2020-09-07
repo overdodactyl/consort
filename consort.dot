@@ -1,0 +1,39 @@
+digraph consort
+{
+  graph [pad = 0.2, nodesep = .5, ranksep=.6]
+  node [fontname = Helvetica, shape = box, width = 6, margin = .2]
+  assessed [label = "Assessed for eligibility (n = <assessed>)", width = 4]
+  excluded [label = "Excluded (n = <excluded_total>) \l" +
+                   "• Not meeting inclusion criteria (n = <excluded_crit>)\l" +
+                   "• Declined to participate (n = <excluded_dec>)\l" +
+                   "• Other reasons (n = <excluded_oth>)\l",
+           width = 4]
+  randomized [label = "Randomized (n = <randomized>)", width = 3]
+  treatment [label = "Allocated to intervention (n = <interv_total>)\l" +
+                      "• Received allocated intervention (n = <interv_rec>)\l" +
+                      "• Did not receive allocated intervention (give reasons) (n = <interv_no>)\l"]
+  control [label = "Allocated to intervention (n = <interv_total>)\l" +
+                      "• Received allocated intervention (n = <interv_rec>)\l" +
+                      "• Did not receive allocated intervention (give reasons) (n = <interv_no>)\l"]
+  lostC [label = "Lost to follow-up (give reasons) (n = <lost_fu>)\l\l" +
+                 "Discontinued intervention (give reasons) (n = <disc>)\l"]
+  lostT [label = "Lost to follow-up (give reasons) (n = <lost_fu>)\l\l" +
+                 "Discontinued intervention (give reasons) (n = <disc>)\l"]
+  analyzedC [label = "Analyzed (n = <analyzed>)\l" +
+                     "• Excluded from analysis (give reasons) (n = 0)\l"]
+  analyzedT [label = "Analyzed (n = <analyzed>)\l" +
+                     "• Excluded from analysis (give reasons) (n = 0)\l"]
+  blank [label = "", width = 0.01, height = 0.01]
+  
+  { rank = same; blank excluded }
+  
+  assessed -> blank[dir = none];
+  randomized -> {treatment control};
+  blank -> excluded[minlen = 3];
+  blank -> randomized;
+  treatment -> lostT;
+  control -> lostC;
+  lostC -> analyzedC;
+  lostT -> analyzedT;
+  
+}
