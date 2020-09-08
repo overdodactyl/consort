@@ -12,8 +12,7 @@ output:
         twitter: no
         all: no
       search: no
-github-repo: overdodactyl/consort      
-url: "https://overdodactyl.github.io/consort/"
+github-repo: overdodactyl/consort
 ---
 
 ```{r setup, include=FALSE}
