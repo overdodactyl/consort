@@ -2,11 +2,18 @@
 title: "CONSORT Diagrams"
 output:
   bookdown::gitbook:
+    output_dir: "docs"
     split_by: none
     self_contained: true
     config:
-      sharing: null
+      sharing:
+        github: yes
+        facebook: no
+        twitter: no
+        all: no
       search: no
+github-repo: overdodactyl/consort      
+url: "https://overdodactyl.github.io/consort/"
 ---
 
 ```{r setup, include=FALSE}
